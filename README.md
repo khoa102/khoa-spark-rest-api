@@ -7,6 +7,7 @@ demonstrate my understanding of REST API, knowledge of backend development, know
 ## What is some of my consideration?
 - The application will be operated under UTC timezone. All data will be stored and processed in UTC timezone. May add a flag for each
 api to specify returned timezone
+- Add logging system to log and debug system (Using logback)
 - Add an api key for security demonstration. I might make an authorization and authentication server later, we may use it for
 authenticate this REST api in the future
 - Data is returned in JSON format

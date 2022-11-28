@@ -1,0 +1,22 @@
+<!-- https://github.com/pedestal/samples/blob/master/template-server/config/logback.xml -->
+<!-- Logback configuration. See http://logback.qos.ch/manual/index.html -->
+<configuration scan="true" scanPeriod="1 hours">
+    <!-- Console output -->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- encoder defaults to ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} [%thread] %-5level %logger{0} - %msg%n</pattern>
+        </encoder>
+        <filter class="org.example.khoa_spark_rest_api.common.ServerLogFilter"/>
+    </appender>
+
+    <appender name="async-stdout" class="ch.qos.logback.classic.AsyncAppender">
+        <queueSize>500</queueSize>
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="STDOUT"/>
+    </appender>
+
+    <root level="DEBUG">
+        <appender-ref ref="async-stdout"/>
+    </root>
+</configuration>
