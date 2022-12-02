@@ -40,6 +40,17 @@ public class HTTPSparkServer {
             response.type("application/json");
             log.info("Response Data: {}", response.body());
         })));
+
+        exception(Exception.class, ((e, request, response) -> {
+            // Code to handle exception
+        }));
+
+        initResumeRouter();
+    }
+
+    private void initResumeRouter() {
+        ResumeController controller = new ResumeController();
+        get("/resume/json", controller::getResumeJson);
     }
 
 
