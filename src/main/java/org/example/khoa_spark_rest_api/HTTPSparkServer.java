@@ -3,6 +3,8 @@ package org.example.khoa_spark_rest_api;
 import lombok.extern.slf4j.Slf4j;
 import org.example.khoa_spark_rest_api.common.Constant;
 import org.example.khoa_spark_rest_api.common.JsonUtil;
+import org.example.khoa_spark_rest_api.database.dao.EducationDAOImpl;
+import org.example.khoa_spark_rest_api.database.dao.UserDAOImpl;
 
 import static spark.Spark.*;
 
@@ -49,9 +51,7 @@ public class HTTPSparkServer {
     }
 
     private void initResumeRouter() {
-        ResumeController controller = new ResumeController();
+        ResumeController controller = new ResumeController(new UserDAOImpl(), new EducationDAOImpl());
         get("/resume/json", controller::getResumeJson);
     }
-
-
 }

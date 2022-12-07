@@ -6,4 +6,5 @@ import java.util.List;
 public interface BaseDAO<T> {
     boolean save(T object);
     List<T> getAll();
+    T getById(int id);
 }

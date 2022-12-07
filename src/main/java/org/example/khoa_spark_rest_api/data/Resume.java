@@ -2,6 +2,7 @@ package org.example.khoa_spark_rest_api.data;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.example.khoa_spark_rest_api.database.entity.UserEntity;
 
 import java.util.List;
 
@@ -24,4 +25,16 @@ public class Resume {
 
     // Education
     private List<Education> educations;
+
+    public Resume(UserEntity userEntity) {
+        this.setName(userEntity.getName());
+        this.setTitle(userEntity.getTitle());
+        this.setEmail(userEntity.getEmail());
+        this.setPhoneNum(userEntity.getPhoneNum());
+        this.setAddress(userEntity.getAddress());
+        this.setSummary(userEntity.getSummary());
+    }
+
+    public Resume() {
+    }
 }

@@ -31,6 +31,13 @@ public abstract class BaseDAOImpl<T> implements BaseDAO<T> {
                 .getResultList();
     }
 
+    public T getById(int id) {
+        EntityManager em = JPAUtil.getEntityManagerFactory().createEntityManager();
+        return em.createQuery(String.format("SELECT table FROM %s table WHERE table.id = :id", getPersistentClass().getSimpleName()), getPersistentClass())
+                .setParameter("id", id)
+                .getSingleResult();
+    }
+
      protected String getActualDAOName() {
         return this.getClass().getSimpleName();
      }

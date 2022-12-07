@@ -23,6 +23,12 @@ So, one-session-per-request is good because the same data is more likely to be a
 - Using Hibernate as a provider for JPA because JPA is more generic and allows the code to be loosely coupled with the provider. 
 That means you can switch out Hibernate for another ORM framework if you want to.
 
+## JPA
+- Bidirectional one-to-many/many-to-one might cause recursive call and lead to stack overflow when printing out or serializing to json
+  - Solution: Use a GraphAdapterBuilder for gson. This is in the gson-extra and maintain by third party
+  - However, the result json doesn't look great so this is only there to prevent accidental recursive problems. To display the json, another
+  dto object is needed
+
 ## DAO pattern vs repository pattern
 - DAO is closer to the database. It is almost a 1:1 mapping of a database table.
 - Repository is Domain-Driven pattern. It represents a domain entity and not database entity. For example: A Domain Entity for Resume, 
